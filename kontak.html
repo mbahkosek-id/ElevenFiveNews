@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ElevenFiveNews - Kontak</title>
+  <style>
+    :root{
+      --accent:#d32f2f;
+      --bg:#f9f9f9;
+      --card:#ffffff;
+      --text:#222;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 20px;
+      background:var(--card);
+      border-bottom:1px solid #eee;
+      position:sticky;
+      top:0;
+      z-index:1200;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .brand img{
+      width:48px;
+      height:48px;
+      object-fit:contain;
+      display:block;
+    }
+    .brand h1{
+      margin:0;
+      font-size:20px;
+      letter-spacing:0.2px;
+      font-weight:700;
+    }
+
+    /* Nav desktop */
+    nav.nav-links{
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+    nav.nav-links a{
+      text-decoration:none;
+      color:var(--text);
+      font-weight:600;
+      padding:8px 10px;
+      border-radius:6px;
+    }
+    nav.nav-links a:hover{
+      color:var(--accent);
+      background:rgba(211,47,47,0.05);
+    }
+
+    /* Hamburger button */
+    .hamburger{
+      display:none; /* show on mobile */
+      border:0;
+      background:transparent;
+      padding:8px;
+      cursor:pointer;
+      align-items:center;
+    }
+    .hamburger span{
+      display:block;
+      width:24px;
+      height:3px;
+      background:var(--text);
+      margin:4px 0;
+      transition:transform .28s ease, opacity .2s ease;
+      border-radius:2px;
+    }
+
+    /* Container */
+    .container{
+      max-width:980px;
+      margin:20px auto;
+      padding:20px;
+      background:var(--card);
+      border-radius:10px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.04);
+    }
+    h2{
+      margin:0 0 12px 0;
+      padding-left:10px;
+      border-left:5px solid var(--accent);
+      color:var(--accent);
+    }
+    .contact-info p{margin:6px 0; line-height:1.6}
+
+    .contact-form input,
+    .contact-form textarea{
+      width:100%;
+      padding:10px 12px;
+      border:1px solid #e0e0e0;
+      border-radius:8px;
+      font-size:14px;
+      margin-top:10px;
+      resize:vertical;
+    }
+    .contact-form button{
+      margin-top:12px;
+      padding:10px 16px;
+      background:var(--accent);
+      color:#fff;
+      border:0;
+      border-radius:8px;
+      font-weight:700;
+      cursor:pointer;
+    }
+    footer{ text-align:center; padding:14px; margin-top:18px; color:#fff; background:#222; }
+
+    /* Mobile: hide nav, show hamburger */
+    @media (max-width: 768px){
+      nav.nav-links{
+        display:none;
+        position:absolute;
+        top:64px;
+        right:16px;
+        background:var(--card);
+        flex-direction:column;
+        gap:8px;
+        padding:12px;
+        box-shadow:0 8px 22px rgba(0,0,0,0.12);
+        border-radius:10px;
+        min-width:170px;
+      }
+      nav.nav-links.open{
+        display:flex;
+      }
+      .hamburger{
+        display:flex;
+      }
+      /* hamburger -> X animation */
+      .hamburger.open span:nth-child(1){
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger.open span:nth-child(2){
+        opacity:0;
+      }
+      .hamburger.open span:nth-child(3){
+        transform: translateY(-7px) rotate(-45deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <img src="https://files.catbox.moe/5rwdy9.png" alt="Logo ElevenFiveNews">
+      <h1>ElevenFiveNews</h1>
+    </div>
+
+    <!-- tombol hamburger untuk mobile -->
+    <button id="hamburger" class="hamburger" aria-label="Buka menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- navigasi -->
+    <nav id="nav" class="nav-links" role="navigation" aria-label="Navigasi utama">
+      <a href="beranda.html">Beranda</a>
+      <a href="index.html">Artikel</a>
+      <a href="profile.html">Profil</a>
+      <a href="kontak.html">Kontak</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <h2>Kontak Kami</h2>
+      <div class="contact-info">
+        <p><strong>Instagram:</strong> Lupa</p>
+        <p><strong>Telepon:</strong> +6287832720265</p>
+        <p><strong>Alamat:</strong> 11-5 Sma Negeri 1 Wringinanom</p>
+      </div>
+
+      <div class="contact-form">
+        <h3>Kirim Pesan</h3>
+        <form onsubmit="event.preventDefault(); alert('Pesan terkirim (demo)');">
+          <input type="text" name="name" placeholder="Nama Anda" required>
+          <input type="email" name="email" placeholder="Email Anda" required>
+          <textarea name="message" rows="5" placeholder="Tulis pesan..." required></textarea>
+          <button type="submit">Kirim</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 ElevenFiveNews - Semua Hak Dilindungi
+  </footer>
+
+  <script>
+    // pastikan JS hanya berjalan setelah DOM siap
+    document.addEventListener('DOMContentLoaded', function(){
+      const ham = document.getElementById('hamburger');
+      const nav = document.getElementById('nav');
+
+      // toggle menu saat klik hamburger
+      ham.addEventListener('click', function(e){
+        const willOpen = nav.classList.toggle('open');
+        ham.classList.toggle('open', willOpen);
+        ham.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      });
+
+      // tutup menu bila klik link (bagus untuk mobile)
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (nav.classList.contains('open')) {
+            nav.classList.remove('open');
+            ham.classList.remove('open');
+            ham.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+
+      // tutup otomatis saat resize > breakpoint
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+          if (nav.classList.contains('open')) {
+            nav.classList.remove('open');
+            ham.classList.remove('open');
+            ham.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+
+      // tutup saat klik di luar menu (hanya untuk mobile ketika terbuka)
+      document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 && nav.classList.contains('open')) {
+          if (!nav.contains(e.target) && !ham.contains(e.target)) {
+            nav.classList.remove('open');
+            ham.classList.remove('open');
+            ham.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
