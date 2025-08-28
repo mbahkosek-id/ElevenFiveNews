@@ -1,197 +1,119 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ElevenFiveNews - Solusi Energi Sekolah</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ElevenFiveNews - Beranda</title>
+  <meta name="description" content="Berita terbaru dan artikel solusi energi sekolah - ElevenFiveNews">
+  <link rel="icon" href="https://files.catbox.moe/5rwdy9.png">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f4f4;
-      color: #222;
+    :root{ --accent:#004aad; --muted:#555; --bg:#f5f5f5; --card:#ffffff; }
+    *{box-sizing:border-box}
+    body{font-family: Arial, Helvetica, sans-serif;margin:0;background:var(--bg);color:#111}
+    header{background:#fff;border-bottom:3px solid var(--accent)}
+    .container{max-width:1180px;margin:0 auto;padding:0 16px}
+    .topbar{display:flex;align-items:center;gap:16px;padding:10px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:50px}
+    .site-title{font-weight:700;font-size:22px;color:var(--accent)}
+    nav{margin-left:auto;display:flex;align-items:center;gap:16px;font-weight:bold}
+    nav a{color:#111;text-decoration:none;padding:8px 10px;border-radius:4px}
+    nav a:hover{color:var(--accent)}
+    .search{position:relative;margin-left:20px}
+    .search input{padding:7px 36px 7px 10px;border-radius:20px;border:1px solid #ccc}
+    .search button{position:absolute;right:2px;top:2px;border:0;background:transparent;padding:6px 10px;cursor:pointer}
+
+    .headline{background:#fff;margin-top:12px;padding:14px;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+    .headline img{width:100%;height:360px;object-fit:cover;border-radius:4px}
+    .headline h1{font-size:24px;margin:10px 0}
+    .headline p{color:var(--muted)}
+
+    footer{margin-top:24px;padding:20px 0;background:#fff;color:var(--muted);border-top:3px solid var(--accent)}
+
+    @media (max-width:960px){
+      nav{display:none}
+      .hamburger{display:block}
     }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #222;
-      color: white;
-      padding: 15px 30px;
-    }
-    header img {
-      height: 50px;
-      margin-right: 15px;
-    }
-    .logo-container {
-      display: flex;
-      align-items: center;
-    }
-    header h1 {
-      font-size: 24px;
-      margin: 0;
-    }
-    /* tombol menu */
-    .menu-toggle {
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 25px;
-      height: 18px;
-    }
-    .menu-toggle span {
-      display: block;
-      height: 3px;
-      background: white;
-      border-radius: 2px;
-    }
-    nav {
-      display: none;
-      position: absolute;
-      top: 70px;
-      right: 20px;
-      background: white;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      border-radius: 5px;
-      overflow: hidden;
-    }
-    nav a {
-      display: block;
-      padding: 10px 20px;
-      text-decoration: none;
-      color: #222;
-    }
-    nav a:hover {
-      background: #f4f4f4;
-    }
-    main {
-      max-width: 900px;
-      margin: 20px auto;
-      background: white;
-      padding: 25px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    h2 {
-      color: #333;
-      margin-top: 20px;
-    }
-    p {
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-    .highlight {
-      background: #e3f2fd;
-      padding: 10px;
-      border-left: 4px solid #1976d2;
-      margin-bottom: 15px;
-    }
-    footer {
-      text-align: center;
-      padding: 15px;
-      background: #222;
-      color: white;
-      margin-top: 30px;
-    }
-    .team {
-      margin-top: 10px;
-      font-size: 14px;
-    }
+    .hamburger{display:none;background:transparent;border:0;padding:8px;cursor:pointer}
+    .mobile-drawer{position:fixed;right:12px;top:66px;background:#fff;width:240px;padding:12px;border-radius:4px;box-shadow:0 6px 20px rgba(0,0,0,.15);display:none;z-index:1000}
+    .mobile-drawer a{display:block;padding:8px 6px;border-bottom:1px solid #eee}
   </style>
 </head>
 <body>
   <header>
-    <div class="logo-container">
-      <img src="https://files.catbox.moe/5rwdy9.png" alt="Logo ElevenFiveNews">
-      <h1>ElevenFiveNews</h1>
+    <div class="container topbar">
+      <div class="brand">
+        <a href="beranda.html"><img src="https://files.catbox.moe/5rwdy9.png" alt="logo"></a>
+        <div class="site-title">ElevenFiveNews</div>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="menu">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <nav>
+        <a href="beranda.html">Beranda</a>
+        <a href="artikel.html">Artikel</a>
+        <a href="kontak.html">Kontak</a>
+        <a href="profile.html">Tentang Kami</a>
+      </nav>
+
+      <div class="search">
+        <input id="q" placeholder="Cari berita..." />
+        <button aria-label="search">🔎</button>
+      </div>
     </div>
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <nav id="menu">
+
+    <!-- Drawer untuk mobile -->
+    <div class="mobile-drawer" id="drawer">
       <a href="beranda.html">Beranda</a>
-      <a href="index.html">Artikel</a>
-      <a href="profile.html">Tentang</a>
+      <a href="artikel.html">Artikel</a>
       <a href="kontak.html">Kontak</a>
-    </nav>
-  </header>
-
-  <main>
-    <h2>Solusi Kelistrikan Sekolah dengan Energi Baru Terbarukan</h2>
-    <p>
-      Sekolah modern saat ini membutuhkan pasokan listrik yang stabil dan efisien. Namun, biaya listrik yang tinggi
-      dan seringnya terjadi pemadaman menjadi permasalahan serius. Selain itu, penggunaan energi fosil yang berlebihan
-      tidak ramah lingkungan dan bertentangan dengan konsep pembangunan berkelanjutan.
-    </p>
-
-    <div class="highlight">
-      <b>Permasalahan utama:</b> konsumsi listrik sekolah yang boros, biaya tinggi, dan ketergantungan pada PLN sepenuhnya.
+      <a href="profile.html">Tentang Kami</a>
     </div>
+  </header>  
 
-    <h2>Solusi yang Ditawarkan</h2>
-    <p>
-      Untuk mengatasi permasalahan ini, sekolah dapat menerapkan kombinasi penggunaan <b>Panel Listrik Tenaga Surya (PLTS)</b>
-      dan <b>listrik dari PLN</b>. Dengan sistem hybrid ini, sekolah bisa hemat sekaligus tetap menjaga kestabilan daya.
-    </p>
-
-    <p>
-      <b>PLTS (Panel Surya)</b> digunakan untuk:
-      <ul>
-        <li>Ruang kelas</li>
-        <li>Ruang guru</li>
-        <li>UKS</li>
-        <li>Perpustakaan</li>
-        <li>Fasilitas ringan lain</li>
-      </ul>
-    </p>
-
-    <p>
-      <b>Listrik PLN</b> tetap digunakan untuk:
-      <ul>
-        <li>Laboratorium komputer</li>
-      </ul>
-      karena ruangan ini memiliki beban daya yang sangat tinggi, dimana PLTS belum mampu menanggung kebutuhan banyak komputer secara bersamaan.
-    </p>
-
-    <div class="highlight">
-      Selain itu, penggunaan sistem <b>kartu listrik model hotel</b> bisa diterapkan di setiap kelas agar pemakaian listrik lebih hemat dan terkontrol.
-    </div>
-
-    <h2>Desain dan Maket</h2>
-    <p>
-      Dalam rancangan maket, panel surya ditempatkan di atap ruang kelas dan gedung utama. Aliran listrik dari PLTS
-      diarahkan untuk kebutuhan kelas, ruang guru, UKS, dan perpustakaan. Sementara itu, aliran listrik PLN difokuskan
-      ke laboratorium komputer dan ruang lain dengan kebutuhan daya besar.
-    </p>
-
-    <p>
-      Dengan sistem ini, sekolah tidak hanya lebih hemat biaya listrik, tetapi juga ikut mendukung program energi
-      baru terbarukan yang ramah lingkungan.
-    </p>
-
-    <h2>Kesimpulan</h2>
-    <p>
-      Kombinasi penggunaan PLTS untuk ruangan ringan dan PLN untuk laboratorium komputer adalah solusi terbaik dan realistis.
-      Sekolah akan mendapatkan manfaat ganda: penghematan biaya, keberlanjutan energi, serta mendukung upaya menjaga lingkungan.
-    </p>
-  </main>
+  <main class="container">
+    <section class="headline">
+      <a href="kelompok4.html" style="text-decoration:none;color:inherit">
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=60" alt="headline">
+        <h1>Sekolah di seluruh Indonesia menghadapi tantangan biaya listrik</h1>
+        <p>Kami merangkum cara-cara praktis, dari pemasangan panel surya atap sampai optimasi konsumsi energi di ruang kelas.</p>
+      </a>
+    </section>
+  </main>  
 
   <footer>
-    <p>&copy; 2025 ElevenFiveNews</p>
-    <div class="team">
-      <b>Kelompok 4:</b> Heldy Arya Agusseta, Zainudin, Vito, Tommy, Sofia, Lidiyah, Sella
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <div><strong>ElevenFiveNews</strong> • © 2025</div>
+      <div style="font-size:13px">Alamat redaksi: Jalan Contoh No. 1, Jakarta</div>
     </div>
-  </footer>
+  </footer>  
 
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById('menu');
-      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-    }
+    const ham = document.getElementById('hamburger');
+    const drawer = document.getElementById('drawer');
+
+    // toggle drawer saat hamburger diklik
+    ham.addEventListener('click', (e) => {
+      e.stopPropagation(); // cegah event bubbling agar tidak langsung tertutup
+      drawer.style.display = drawer.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // klik di luar drawer = tutup
+    document.addEventListener('click', (e) => {
+      if (!drawer.contains(e.target) && !ham.contains(e.target)) {
+        if (window.innerWidth < 960) drawer.style.display = 'none';
+      }
+    });
+
+    // auto reset saat resize ke desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 960) {
+        drawer.style.display = 'none';
+      }
+    });
   </script>
 </body>
 </html>
